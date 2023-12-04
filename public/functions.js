@@ -54,3 +54,12 @@ async function login() {
         alert(data.mensagem);
     }
 }
+
+function alternarFormularios() {
+    const cadastroForm = document.getElementById('cadastroForm');
+    const loginForm = document.getElementById('loginForm');
+
+    // Alterna entre ocultar e exibir os formulários
+    cadastroForm.classList.toggle('oculto');
+    loginForm.classList.toggle('oculto');
+}
