@@ -1,14 +1,26 @@
 async function cadastrar() {
-    const nome = document.getElementById('cadastroNome').value;
-    const email = document.getElementById('cadastroEmail').value;
+    const usuario = document.getElementById('cadastroUsuario').value;
     const senha = document.getElementById('cadastroSenha').value;
+    const confirmacaoSenha = document.getElementById('confirmaSenha').value;
+
+    // Simples validação do lado do cliente
+    if (!usuario || !senha || !confirmacaoSenha) {
+        alert('Por favor, preencha todos os campos.');
+        return;
+    }
+
+    // Verifica se a senha e a confirmação são iguais
+    if (senha !== confirmacaoSenha) {
+        alert('A senha e a confirmação de senha não correspondem.');
+        return;
+    }
 
     const response = await fetch('http://localhost:3000/cadastro', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ nome, email, senha }),
+        body: JSON.stringify({ usuario, senha, confirmacaoSenha }),
     });
 
     const data = await response.json();
@@ -16,15 +28,21 @@ async function cadastrar() {
 }
 
 async function login() {
-    const email = document.getElementById('loginEmail').value;
+    const usuario = document.getElementById('loginUsuario').value;
     const senha = document.getElementById('loginSenha').value;
+
+    // Simples validação do lado do cliente
+    if (!usuario || !senha) {
+        alert('Por favor, forneça o usuário e a senha.');
+        return;
+    }
 
     const response = await fetch('http://localhost:3000/login', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ email, senha }),
+        body: JSON.stringify({ usuario, senha }),
     });
 
     const data = await response.json();

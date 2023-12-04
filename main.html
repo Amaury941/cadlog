@@ -10,29 +10,27 @@
 
     <form id="cadastroForm">
         <h2>Cadastro</h2>
-        <label for="cadastroNome">Nome:</label>
-        <input type="text" id="cadastroNome" name="cadastroNome" required>
-
-        <label for="cadastroEmail">Email:</label>
-        <input type="email" id="cadastroEmail" name="cadastroEmail" required>
+        <label for="cadastroUsuario">Usuário:</label>
+        <input type="text" id="cadastroUsuario" name="cadastroUsuario" required>
 
         <label for="cadastroSenha">Senha:</label>
         <input type="password" id="cadastroSenha" name="cadastroSenha" required>
+
+        <label for="confirmaSenha">Confirmação de Senha:</label>
+        <input type="password" id="confirmaSenha" name="confirmaSenha" required>
 
         <button type="button" onclick="cadastrar()">Cadastrar</button>
     </form>
 
     <form id="loginForm">
         <h2>Login</h2>
-        <label for="loginEmail">Email:</label>
-        <input type="email" id="loginEmail" name="loginEmail" required>
+        <label for="loginUsuario">Usuário:</label>
+        <input type="text" id="loginUsuario" name="loginUsuario" required>
 
         <label for="loginSenha">Senha:</label>
         <input type="password" id="loginSenha" name="loginSenha" required>
 
         <button type="button" onclick="login()">Entrar</button>
     </form>
-
-
 </body>
 </html>
