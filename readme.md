@@ -21,7 +21,7 @@ Antes de começar, você vai precisar ter instalado em sua máquina as seguintes
 $ git clone https://github.com/Amaury941/cadlog/
 
 # Acesse a pasta do projeto no terminal/cmd
-$ cd alt
+$ cd cadlog
 
 # Instale as dependências
 $ npm install
