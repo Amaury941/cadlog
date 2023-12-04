@@ -39,6 +39,7 @@ app.post('/cadastro', (req, res) => {
     res.status(201).json({ mensagem: 'Usuário cadastrado com sucesso!' });
 });
 
+
 // Rota para login
 app.post('/login', (req, res) => {
     const { usuario, senha } = req.body;
@@ -55,8 +56,16 @@ app.post('/login', (req, res) => {
         return res.status(401).json({ mensagem: 'Credenciais inválidas.' });
     }
 
-    res.status(200).json({ mensagem: 'Login bem-sucedido!' });
+    // Retorna o nome do usuário no caso de um login bem-sucedido
+    res.status(200).json({ mensagem: 'Login bem-sucedido!', nomeUsuario: usuario });
 });
+
+// Rota para a página de parabéns
+app.get('/parabens', (req, res) => {
+    const nomeUsuario = req.query.nome || 'Usuário';
+    res.sendFile(path.join(__dirname, 'parabens.html'));
+});
+
 
 // Rota básica para o método GET na raiz
 app.get('/', (req, res) => {

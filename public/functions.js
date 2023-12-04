@@ -46,5 +46,11 @@ async function login() {
     });
 
     const data = await response.json();
-    alert(data.mensagem);
+
+    if (response.ok) {
+        // Login bem-sucedido, redireciona para a página de parabéns
+        window.location.href = `/parabens?nome=${usuario}`;
+    } else {
+        alert(data.mensagem);
+    }
 }
