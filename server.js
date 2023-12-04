@@ -1,5 +1,6 @@
 const express = require('express');
 const bodyParser = require('body-parser');
+const path = require("path");
 const cors = require("cors");
 
 
@@ -53,9 +54,15 @@ app.post('/login', (req, res) => {
     res.status(200).json({ mensagem: 'Login bem-sucedido!' });
 });
 
+
 // Rota básica para o método GET na raiz
 app.get('/', (req, res) => {
-    res.send('Bem-vindo ao sistema de cadastro!');
+    res.sendFile(__dirname + '/main.html');
+  });
+
+
+app.get('/functions.js', (req, res) => {
+res.sendFile(path.join(__dirname, 'public', '/functions.js'));
 });
 
 // Inicia o servidor
