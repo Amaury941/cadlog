@@ -1,7 +1,7 @@
 <h1 align="center">Sistema de login e cadastro simples</h1>
 
 ## Descrição do Projeto
-<p align="center">Implementação simples de um sismtema de cadastro e login, utilizando de nodejs</p>
+<p align="center">Implementação simples de um sistema de cadastro e login, utilizando de nodejs</p>
 
 ### Features
 - [x] Cadastro de usuário
