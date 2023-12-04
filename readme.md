@@ -36,7 +36,6 @@ $ yarn start
 
 As seguintes ferramentas foram usadas na construção do projeto:
 
-- [Expo](https://expo.io/)
 - [Node.js](https://nodejs.org/en/)
 - [yarn](https://www.npmjs.com/package/yarn)
 - [express](https://www.npmjs.com/package/express)
