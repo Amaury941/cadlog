@@ -3,17 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bem-vindo</title>
+    <title>Tela de login</title>
 </head>
 <body>
-    <h1>Você está logado, <span id="nomeUsuario"></span>!</h1>
+    <p>parabéns, <span id="nomeUsuario"></span>,</p>
+    <p>Login feito com sucesso!</p>
+    <a href="/">Sair da conta</a>
 
     <script>
-        // Extrai o nome do usuário da URL
+        // Captura o nome do usuário da URL e exibe na página
         const params = new URLSearchParams(window.location.search);
         const nomeUsuario = params.get('nome');
-
-        // Exibe o nome do usuário na página
         document.getElementById('nomeUsuario').innerText = nomeUsuario;
     </script>
 </body>
+</html>

@@ -1,10 +1,10 @@
 const express = require('express');
 const bodyParser = require('body-parser');
-const cors = require("cors");
-
+const path = require('path');
+const cors = require('cors');
 
 const app = express();
-app.use(cors())
+app.use(cors());
 
 const port = 3000;
 
@@ -16,46 +16,64 @@ const users = [];
 
 // Rota para cadastrar um novo usuário
 app.post('/cadastro', (req, res) => {
-    const { nome, email, senha } = req.body;
+    const { usuario, senha, confirmacaoSenha } = req.body;
 
     // Simples validação
-    if (!nome || !email || !senha) {
+    if (!usuario || !senha || !confirmacaoSenha) {
         return res.status(400).json({ mensagem: 'Por favor, preencha todos os campos.' });
     }
 
-    // Verifica se o email já está cadastrado
-    if (users.some(user => user.email === email)) {
-        return res.status(400).json({ mensagem: 'Este email já está cadastrado.' });
+    // Verifica se a senha e a confirmação são iguais
+    if (senha !== confirmacaoSenha) {
+        return res.status(400).json({ mensagem: 'A senha e a confirmação de senha não correspondem.' });
+    }
+
+    // Verifica se o usuário já está cadastrado
+    if (users.some(user => user.usuario === usuario)) {
+        return res.status(400).json({ mensagem: 'Este usuário já está cadastrado.' });
     }
 
     // Adiciona o usuário à lista (simulação de persistência)
-    users.push({ nome, email, senha });
+    users.push({ usuario, senha });
 
     res.status(201).json({ mensagem: 'Usuário cadastrado com sucesso!' });
 });
 
+
 // Rota para login
 app.post('/login', (req, res) => {
-    const { email, senha } = req.body;
+    const { usuario, senha } = req.body;
 
     // Simples validação
-    if (!email || !senha) {
-        return res.status(400).json({ mensagem: 'Por favor, forneça o email e a senha.' });
+    if (!usuario || !senha) {
+        return res.status(400).json({ mensagem: 'Por favor, forneça o usuário e a senha.' });
     }
 
     // Verifica se o usuário existe
-    const user = users.find(user => user.email === email && user.senha === senha);
+    const user = users.find(user => user.usuario === usuario && user.senha === senha);
 
     if (!user) {
         return res.status(401).json({ mensagem: 'Credenciais inválidas.' });
     }
 
-    res.status(200).json({ mensagem: 'Login bem-sucedido!' });
+    // Retorna o nome do usuário no caso de um login bem-sucedido
+    res.status(200).json({ mensagem: 'Login bem-sucedido!', nomeUsuario: usuario });
 });
+
+// Rota para a página de parabéns
+app.get('/parabens', (req, res) => {
+    const nomeUsuario = req.query.nome || 'Usuário';
+    res.sendFile(path.join(__dirname, 'parabens.html'));
+});
+
 
 // Rota básica para o método GET na raiz
 app.get('/', (req, res) => {
-    res.send('Bem-vindo ao sistema de cadastro!');
+    res.sendFile(path.join(__dirname, 'main.html'));
+});
+
+app.get('/functions.js', (req, res) => {
+    res.sendFile(path.join(__dirname, 'public', 'functions.js'));
 });
 
 // Inicia o servidor
