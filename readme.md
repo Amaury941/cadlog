@@ -18,7 +18,7 @@ Antes de começar, você vai precisar ter instalado em sua máquina as seguintes
 
 ```bash
 # Clone este repositório
-$ git clone <https://github.com/Amaury941/cadlog/tree/alt>
+$ git clone https://github.com/Amaury941/cadlog/
 
 # Acesse a pasta do projeto no terminal/cmd
 $ cd alt
