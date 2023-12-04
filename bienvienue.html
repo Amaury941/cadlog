@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bem-vindo</title>
+</head>
+<body>
+    <h1>Você está logado, <span id="nomeUsuario"></span>!</h1>
+
+    <script>
+        // Extrai o nome do usuário da URL
+        const params = new URLSearchParams(window.location.search);
+        const nomeUsuario = params.get('nome');
+
+        // Exibe o nome do usuário na página
+        document.getElementById('nomeUsuario').innerText = nomeUsuario;
+    </script>
+</body>
