@@ -10,8 +10,8 @@
 ### Pré-requisitos
 
 Antes de começar, você vai precisar ter instalado em sua máquina as seguintes ferramentas:
-[Node.js](https://nodejs.org/en/). 
-[VSCode](https://code.visualstudio.com/), para caso haja necessidade de editar
+    [Node.js](https://nodejs.org/en/),
+    [VSCode](https://code.visualstudio.com/). para caso haja necessidade de editar
 
 ### 🎲 Rodando o Back End (servidor)
 
